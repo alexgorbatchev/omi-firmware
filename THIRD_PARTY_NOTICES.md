@@ -1,27 +1,25 @@
 # Third-party notices
 
-The firmware images in this repository's releases are built with the nRF Connect SDK v2.9.0 and contain the components below, in addition to the Omi firmware itself ([LICENSE](LICENSE)). The list covers the libraries linked into the application core image (image 0), the only image the releases ship; it is generated from the image's link map.
+The firmware images in this repository's releases are built with the nRF Connect SDK v2.9.0 and contain the components below, in addition to the Omi firmware itself ([LICENSE](LICENSE)). The list covers the libraries linked into the application core image (image 0), the only image the releases ship; it is generated from the image's link map and the sources its objects were compiled from.
 
 | Component | Used for | License |
 | :--- | :--- | :--- |
 | [Zephyr RTOS](https://github.com/zephyrproject-rtos/zephyr) | Kernel, drivers, Bluetooth host, file system and MCUmgr | Apache-2.0 |
 | [MCUboot](https://github.com/mcu-tools/mcuboot) `bootutil` | Image slot state for updates | Apache-2.0 |
 | [zcbor](https://github.com/NordicSemiconductor/zcbor) | CBOR encoding for MCUmgr | Apache-2.0 |
-| Battery library by Marcus Alexander Tjomsaas | Battery voltage readout | Apache-2.0 |
 | [nRF Connect SDK](https://github.com/nrfconnect/sdk-nrf) and [nrfxlib](https://github.com/nrfconnect/sdk-nrfxlib) (`nrf_cc312_platform`) | Nordic drivers and the CryptoCell platform library | LicenseRef-Nordic-5-Clause |
 | [nrfx](https://github.com/NordicSemiconductor/nrfx) | Nordic peripheral drivers | BSD-3-Clause |
 | [littlefs](https://github.com/littlefs-project/littlefs) | Settings file system | BSD-3-Clause |
 | [libmetal](https://github.com/OpenAMP/libmetal) | Inter-core communication with the network core | BSD-3-Clause |
-| [OpenAMP](https://github.com/OpenAMP/open-amp) | Inter-core communication with the network core | BSD-3-Clause |
+| [OpenAMP](https://github.com/OpenAMP/open-amp) | Inter-core communication with the network core | BSD-3-Clause and BSD-2-Clause |
+| [TinyCrypt](https://github.com/zephyrproject-rtos/tinycrypt) | AES, CMAC, SHA-256 and HMAC for the Bluetooth host | BSD-3-Clause |
 | [Opus](https://opus-codec.org) 1.2.1 | Audio encoding | BSD-3-Clause |
 | [picolibc](https://github.com/picolibc/picolibc) | C library | BSD and related permissive licenses, listed in its `COPYING.picolibc` |
 | GCC `libgcc` | Compiler runtime | GPL-3.0 with the GCC Runtime Library Exception |
 
 ## Apache License 2.0
 
-Applies to Zephyr RTOS, MCUboot, zcbor and the battery library. MCUboot's copy of the license additionally notes that MCUboot bundles tinycrypt under the 3-clause BSD license.
-
-Copyright 2024 Marcus Alexander Tjomsaas (battery library).
+Applies to Zephyr RTOS, MCUboot and zcbor. MCUboot's copy of the license additionally notes that MCUboot bundles tinycrypt under the 3-clause BSD license.
 
 ```text
                                  Apache License
@@ -227,6 +225,24 @@ Copyright 2024 Marcus Alexander Tjomsaas (battery library).
    limitations under the License.
 ```
 
+## MCUboot NOTICE
+
+The `NOTICE` file distributed with MCUboot:
+
+```text
+Apache Mynewt
+Copyright 2015-2017 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+Portions of this software were developed at
+Runtime Inc, copyright 2015.
+
+Portions of this software were developed at
+Arm Limited, copyright 2019-2021.
+```
+
 ## LicenseRef-Nordic-5-Clause
 
 Applies to the nRF Connect SDK and the `nrf_cc312_platform` library of nrfxlib.
@@ -419,7 +435,7 @@ This enables machine processing of license information based on the SPDX
 License Identifiers that are here available: http://spdx.org/licenses/
 ```
 
-## OpenAMP (BSD-3-Clause)
+## OpenAMP (BSD-3-Clause and BSD-2-Clause)
 
 ```text
 Software License Agreement (BSD 3-Clause License)
@@ -525,6 +541,38 @@ Use the following tag instead of the full license text in the individual files:
 
 This enables machine processing of license information based on the SPDX
 License Identifiers that are here available: http://spdx.org/licenses/
+```
+
+## TinyCrypt (BSD-3-Clause)
+
+```text
+Copyright (C) 2017 by Intel Corporation, All Rights Reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+  - Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+  - Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+
+  - Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this software
+  without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
 ```
 
 ## Opus 1.2.1 (BSD-3-Clause)
@@ -6969,4 +7017,376 @@ License: UCB-2
  THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
  IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+```
+
+## SPDX identifiers of the linked sources
+
+The SPDX license identifier of every third-party source file compiled into the image, grouped by identifier; headers are not listed. Prebuilt libraries ([picolibc](https://github.com/picolibc/picolibc) and GCC `libgcc`) have no sources in the build and are covered above.
+
+| SPDX identifier | Sources |
+| :--- | ---: |
+| Apache-2.0 | 199 |
+| BSD-3-Clause | 42 |
+| LicenseRef-Nordic-5-Clause | 8 |
+| BSD-2-Clause | 2 |
+| CC0-1.0 | 1 |
+| (no SPDX identifier) | 77 |
+
+### Apache-2.0
+
+```text
+bootloader/mcuboot/boot/bootutil/src/bootutil_public.c
+build/west/omi/zephyr/misc/generated/configs.c
+modules/hal/nordic/nrfx/mdk/system_nrf5340_application.c
+modules/lib/zcbor/src/zcbor_common.c
+modules/lib/zcbor/src/zcbor_decode.c
+modules/lib/zcbor/src/zcbor_encode.c
+zephyr/arch/arm/core/cortex_m/__aeabi_read_tp.S
+zephyr/arch/arm/core/cortex_m/cmse/arm_core_cmse.c
+zephyr/arch/arm/core/cortex_m/cpu_idle.c
+zephyr/arch/arm/core/cortex_m/exc_exit.c
+zephyr/arch/arm/core/cortex_m/fault.c
+zephyr/arch/arm/core/cortex_m/fault_s.S
+zephyr/arch/arm/core/cortex_m/fpu.c
+zephyr/arch/arm/core/cortex_m/irq_init.c
+zephyr/arch/arm/core/cortex_m/irq_manage.c
+zephyr/arch/arm/core/cortex_m/isr_wrapper.c
+zephyr/arch/arm/core/cortex_m/prep_c.c
+zephyr/arch/arm/core/cortex_m/reset.S
+zephyr/arch/arm/core/cortex_m/scb.c
+zephyr/arch/arm/core/cortex_m/swap.c
+zephyr/arch/arm/core/cortex_m/swap_helper.S
+zephyr/arch/arm/core/cortex_m/thread.c
+zephyr/arch/arm/core/cortex_m/thread_abort.c
+zephyr/arch/arm/core/cortex_m/vector_table.S
+zephyr/arch/arm/core/fatal.c
+zephyr/arch/arm/core/mpu/arm_core_mpu.c
+zephyr/arch/arm/core/mpu/arm_mpu.c
+zephyr/arch/arm/core/mpu/arm_mpu_regions.c
+zephyr/arch/arm/core/nmi.c
+zephyr/arch/arm/core/nmi_on_reset.S
+zephyr/arch/arm/core/offsets/offsets.c
+zephyr/arch/arm/core/tls.c
+zephyr/arch/common/sw_isr_common.c
+zephyr/drivers/adc/adc_common.c
+zephyr/drivers/adc/adc_nrfx_saadc.c
+zephyr/drivers/audio/dmic_nrfx_pdm.c
+zephyr/drivers/bluetooth/hci/ipc.c
+zephyr/drivers/bluetooth/hci/nrf53_support.c
+zephyr/drivers/clock_control/clock_control_nrf.c
+zephyr/drivers/console/uart_console.c
+zephyr/drivers/disk/sdmmc_subsys.c
+zephyr/drivers/entropy/entropy_bt_hci.c
+zephyr/drivers/flash/flash_page_layout.c
+zephyr/drivers/flash/flash_util.c
+zephyr/drivers/flash/jesd216.c
+zephyr/drivers/flash/soc_flash_nrf.c
+zephyr/drivers/flash/spi_nor.c
+zephyr/drivers/gpio/gpio_hogs.c
+zephyr/drivers/gpio/gpio_nrfx.c
+zephyr/drivers/i2c/i2c_common.c
+zephyr/drivers/i2c/i2c_nrfx_twim.c
+zephyr/drivers/i2c/i2c_nrfx_twim_common.c
+zephyr/drivers/i2s/i2s_common.c
+zephyr/drivers/input/input_gpio_keys.c
+zephyr/drivers/mbox/mbox_nrfx_ipc.c
+zephyr/drivers/pinctrl/common.c
+zephyr/drivers/pinctrl/pinctrl_nrf.c
+zephyr/drivers/pwm/pwm_nrfx.c
+zephyr/drivers/regulator/regulator_common.c
+zephyr/drivers/regulator/regulator_fixed.c
+zephyr/drivers/sdhc/sdhc_spi.c
+zephyr/drivers/sensor/st/lsm6dsl/lsm6dsl.c
+zephyr/drivers/sensor/st/lsm6dsl/lsm6dsl_i2c.c
+zephyr/drivers/sensor/st/lsm6dsl/lsm6dsl_spi.c
+zephyr/drivers/serial/uart_nrfx_uarte.c
+zephyr/drivers/spi/spi_nrfx_common.c
+zephyr/drivers/spi/spi_nrfx_spim.c
+zephyr/drivers/timer/nrf_rtc_timer.c
+zephyr/drivers/timer/sys_clock_init.c
+zephyr/drivers/watchdog/wdt_nrfx.c
+zephyr/kernel/busy_wait.c
+zephyr/kernel/device.c
+zephyr/kernel/fatal.c
+zephyr/kernel/idle.c
+zephyr/kernel/init.c
+zephyr/kernel/init_static.c
+zephyr/kernel/kheap.c
+zephyr/kernel/mem_slab.c
+zephyr/kernel/mempool.c
+zephyr/kernel/msg_q.c
+zephyr/kernel/mutex.c
+zephyr/kernel/poll.c
+zephyr/kernel/queue.c
+zephyr/kernel/sched.c
+zephyr/kernel/sem.c
+zephyr/kernel/system_work_q.c
+zephyr/kernel/thread.c
+zephyr/kernel/timeout.c
+zephyr/kernel/timer.c
+zephyr/kernel/timeslicing.c
+zephyr/kernel/work.c
+zephyr/kernel/xip.c
+zephyr/lib/crc/crc16_sw.c
+zephyr/lib/crc/crc24_sw.c
+zephyr/lib/crc/crc32_sw.c
+zephyr/lib/crc/crc32c_sw.c
+zephyr/lib/crc/crc4_sw.c
+zephyr/lib/crc/crc7_sw.c
+zephyr/lib/crc/crc8_sw.c
+zephyr/lib/heap/heap.c
+zephyr/lib/libc/common/source/stdio/remove.c
+zephyr/lib/libc/common/source/stdlib/abort.c
+zephyr/lib/libc/picolibc/libc-hooks.c
+zephyr/lib/net_buf/buf.c
+zephyr/lib/net_buf/buf_simple.c
+zephyr/lib/os/assert.c
+zephyr/lib/os/cbprintf_complete.c
+zephyr/lib/os/cbprintf_packaged.c
+zephyr/lib/os/poweroff.c
+zephyr/lib/os/printk.c
+zephyr/lib/os/reboot.c
+zephyr/lib/os/sem.c
+zephyr/lib/os/thread_entry.c
+zephyr/lib/posix/options/clock.c
+zephyr/lib/posix/options/timer.c
+zephyr/lib/posix/options/timespec_to_timeout.c
+zephyr/lib/utils/bitarray.c
+zephyr/lib/utils/dec.c
+zephyr/lib/utils/hex.c
+zephyr/lib/utils/notify.c
+zephyr/lib/utils/onoff.c
+zephyr/lib/utils/rb.c
+zephyr/lib/utils/ring_buffer.c
+zephyr/lib/utils/timeutil.c
+zephyr/modules/hal_nordic/nrfx/nrfx_glue.c
+zephyr/soc/nordic/common/poweroff.c
+zephyr/soc/nordic/nrf53/nrf53_cpunet_mgmt.c
+zephyr/soc/nordic/nrf53/soc.c
+zephyr/soc/nordic/validate_base_addresses.c
+zephyr/soc/nordic/validate_binding_headers.c
+zephyr/soc/nordic/validate_enabled_instances.c
+zephyr/subsys/bluetooth/common/addr.c
+zephyr/subsys/bluetooth/common/bt_str.c
+zephyr/subsys/bluetooth/common/dummy.c
+zephyr/subsys/bluetooth/common/rpa.c
+zephyr/subsys/bluetooth/crypto/bt_crypto.c
+zephyr/subsys/bluetooth/crypto/bt_crypto_tc.c
+zephyr/subsys/bluetooth/host/addr.c
+zephyr/subsys/bluetooth/host/adv.c
+zephyr/subsys/bluetooth/host/att.c
+zephyr/subsys/bluetooth/host/buf.c
+zephyr/subsys/bluetooth/host/conn.c
+zephyr/subsys/bluetooth/host/crypto_tc.c
+zephyr/subsys/bluetooth/host/data.c
+zephyr/subsys/bluetooth/host/ecc.c
+zephyr/subsys/bluetooth/host/gatt.c
+zephyr/subsys/bluetooth/host/hci_common.c
+zephyr/subsys/bluetooth/host/hci_core.c
+zephyr/subsys/bluetooth/host/id.c
+zephyr/subsys/bluetooth/host/keys.c
+zephyr/subsys/bluetooth/host/l2cap.c
+zephyr/subsys/bluetooth/host/long_wq.c
+zephyr/subsys/bluetooth/host/smp.c
+zephyr/subsys/bluetooth/host/uuid.c
+zephyr/subsys/bluetooth/services/bas/bas.c
+zephyr/subsys/bluetooth/services/dis.c
+zephyr/subsys/dfu/boot/mcuboot.c
+zephyr/subsys/dfu/img_util/flash_img.c
+zephyr/subsys/disk/disk_access.c
+zephyr/subsys/fs/fs.c
+zephyr/subsys/fs/fs_impl.c
+zephyr/subsys/fs/littlefs_fs.c
+zephyr/subsys/fs/nvs/nvs.c
+zephyr/subsys/input/input.c
+zephyr/subsys/input/input_hid.c
+zephyr/subsys/input/input_utils.c
+zephyr/subsys/ipc/ipc_service/backends/ipc_rpmsg_static_vrings.c
+zephyr/subsys/ipc/ipc_service/ipc_service.c
+zephyr/subsys/ipc/ipc_service/lib/ipc_rpmsg.c
+zephyr/subsys/ipc/ipc_service/lib/ipc_static_vrings.c
+zephyr/subsys/mem_mgmt/mem_attr.c
+zephyr/subsys/mgmt/mcumgr/bootutil_hooks/nrf53_hooks.c
+zephyr/subsys/mgmt/mcumgr/grp/img_mgmt/src/img_mgmt.c
+zephyr/subsys/mgmt/mcumgr/grp/img_mgmt/src/img_mgmt_state.c
+zephyr/subsys/mgmt/mcumgr/grp/img_mgmt/src/img_mgmt_util.c
+zephyr/subsys/mgmt/mcumgr/grp/img_mgmt/src/zephyr_img_mgmt.c
+zephyr/subsys/mgmt/mcumgr/grp/os_mgmt/src/os_mgmt.c
+zephyr/subsys/mgmt/mcumgr/grp/zephyr_basic/src/basic_mgmt.c
+zephyr/subsys/mgmt/mcumgr/mgmt/src/mgmt.c
+zephyr/subsys/mgmt/mcumgr/smp/src/smp.c
+zephyr/subsys/mgmt/mcumgr/transport/src/smp.c
+zephyr/subsys/mgmt/mcumgr/transport/src/smp_bt.c
+zephyr/subsys/mgmt/mcumgr/transport/src/smp_reassembly.c
+zephyr/subsys/mgmt/mcumgr/util/src/zcbor_bulk.c
+zephyr/subsys/pm/device.c
+zephyr/subsys/pm/device_system_managed.c
+zephyr/subsys/random/random_entropy_device.c
+zephyr/subsys/sd/sd.c
+zephyr/subsys/sd/sd_ops.c
+zephyr/subsys/sd/sdmmc.c
+zephyr/subsys/settings/src/settings.c
+zephyr/subsys/settings/src/settings_init.c
+zephyr/subsys/settings/src/settings_line.c
+zephyr/subsys/settings/src/settings_nvs.c
+zephyr/subsys/settings/src/settings_store.c
+zephyr/subsys/storage/flash_map/flash_map.c
+zephyr/subsys/storage/flash_map/flash_map_layout.c
+zephyr/subsys/storage/stream/stream_flash.c
+zephyr/subsys/tracing/tracing_none.c
+```
+
+### BSD-3-Clause
+
+```text
+modules/fs/littlefs/lfs.c
+modules/fs/littlefs/lfs_util.c
+modules/hal/libmetal/libmetal/lib/device.c
+modules/hal/libmetal/libmetal/lib/dma.c
+modules/hal/libmetal/libmetal/lib/init.c
+modules/hal/libmetal/libmetal/lib/io.c
+modules/hal/libmetal/libmetal/lib/irq.c
+modules/hal/libmetal/libmetal/lib/log.c
+modules/hal/libmetal/libmetal/lib/shmem.c
+modules/hal/libmetal/libmetal/lib/softirq.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/alloc.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/condition.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/device.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/init.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/irq.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/log.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/shmem.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/sys.c
+modules/hal/libmetal/libmetal/lib/system/zephyr/time.c
+modules/hal/libmetal/libmetal/lib/version.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_clock.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_dppi.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_gpiote.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_ipc.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_nvmc.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_pdm.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_pwm.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_spim.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_twi_twim.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_twim.c
+modules/hal/nordic/nrfx/drivers/src/nrfx_wdt.c
+modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c
+modules/hal/nordic/nrfx/helpers/nrfx_gppi_dppi.c
+modules/lib/open-amp/open-amp/lib/remoteproc/elf_loader.c
+modules/lib/open-amp/open-amp/lib/remoteproc/remoteproc.c
+modules/lib/open-amp/open-amp/lib/remoteproc/remoteproc_virtio.c
+modules/lib/open-amp/open-amp/lib/remoteproc/rsc_table_parser.c
+modules/lib/open-amp/open-amp/lib/rpmsg/rpmsg.c
+modules/lib/open-amp/open-amp/lib/rpmsg/rpmsg_virtio.c
+modules/lib/open-amp/open-amp/lib/utils/string.c
+modules/lib/open-amp/open-amp/lib/version.c
+zephyr/modules/littlefs/zephyr_lfs_crc.c
+```
+
+### LicenseRef-Nordic-5-Clause
+
+```text
+nrf/drivers/entropy/entropy_cc3xx.c
+nrf/drivers/hw_cc3xx/hw_cc3xx.c
+nrf/lib/boot_banner/banner.c
+nrf/subsys/bluetooth/hci_vs_sdc.c
+nrf/subsys/bluetooth/host_extensions/host_extensions.c
+nrf/subsys/partition_manager/flash_map_partition_manager.c
+nrfxlib/crypto/nrf_cc312_platform/src/nrf_cc3xx_platform_abort_zephyr.c
+nrfxlib/crypto/nrf_cc312_platform/src/nrf_cc3xx_platform_mutex_zephyr.c
+```
+
+### BSD-2-Clause
+
+```text
+modules/lib/open-amp/open-amp/lib/virtio/virtio.c
+modules/lib/open-amp/open-amp/lib/virtio/virtqueue.c
+```
+
+### CC0-1.0
+
+```text
+zephyr/subsys/random/random_xoshiro128.c
+```
+
+### (no SPDX identifier)
+
+```text
+build/west/omi/zephyr/isr_tables.c
+modules/crypto/tinycrypt/lib/source/aes_decrypt.c
+modules/crypto/tinycrypt/lib/source/aes_encrypt.c
+modules/crypto/tinycrypt/lib/source/cmac_mode.c
+modules/crypto/tinycrypt/lib/source/hmac.c
+modules/crypto/tinycrypt/lib/source/hmac_prng.c
+modules/crypto/tinycrypt/lib/source/sha256.c
+modules/crypto/tinycrypt/lib/source/utils.c
+omi/src/lib/core/lib/opus-1.2.1/CNG.c
+omi/src/lib/core/lib/opus-1.2.1/LPC_analysis_filter.c
+omi/src/lib/core/lib/opus-1.2.1/LPC_fit.c
+omi/src/lib/core/lib/opus-1.2.1/LPC_inv_pred_gain.c
+omi/src/lib/core/lib/opus-1.2.1/NLSF2A.c
+omi/src/lib/core/lib/opus-1.2.1/NLSF_decode.c
+omi/src/lib/core/lib/opus-1.2.1/NLSF_stabilize.c
+omi/src/lib/core/lib/opus-1.2.1/NLSF_unpack.c
+omi/src/lib/core/lib/opus-1.2.1/PLC.c
+omi/src/lib/core/lib/opus-1.2.1/arm/celt_pitch_xcorr_arm_gcc.s
+omi/src/lib/core/lib/opus-1.2.1/bands.c
+omi/src/lib/core/lib/opus-1.2.1/biquad_alt.c
+omi/src/lib/core/lib/opus-1.2.1/bwexpander.c
+omi/src/lib/core/lib/opus-1.2.1/bwexpander_32.c
+omi/src/lib/core/lib/opus-1.2.1/celt.c
+omi/src/lib/core/lib/opus-1.2.1/celt_decoder.c
+omi/src/lib/core/lib/opus-1.2.1/celt_encoder.c
+omi/src/lib/core/lib/opus-1.2.1/celt_lpc.c
+omi/src/lib/core/lib/opus-1.2.1/code_signs.c
+omi/src/lib/core/lib/opus-1.2.1/cwrs.c
+omi/src/lib/core/lib/opus-1.2.1/dec_API.c
+omi/src/lib/core/lib/opus-1.2.1/decode_core.c
+omi/src/lib/core/lib/opus-1.2.1/decode_frame.c
+omi/src/lib/core/lib/opus-1.2.1/decode_indices.c
+omi/src/lib/core/lib/opus-1.2.1/decode_parameters.c
+omi/src/lib/core/lib/opus-1.2.1/decode_pitch.c
+omi/src/lib/core/lib/opus-1.2.1/decode_pulses.c
+omi/src/lib/core/lib/opus-1.2.1/decoder_set_fs.c
+omi/src/lib/core/lib/opus-1.2.1/entcode.c
+omi/src/lib/core/lib/opus-1.2.1/entdec.c
+omi/src/lib/core/lib/opus-1.2.1/entenc.c
+omi/src/lib/core/lib/opus-1.2.1/gain_quant.c
+omi/src/lib/core/lib/opus-1.2.1/init_decoder.c
+omi/src/lib/core/lib/opus-1.2.1/kiss_fft.c
+omi/src/lib/core/lib/opus-1.2.1/laplace.c
+omi/src/lib/core/lib/opus-1.2.1/lin2log.c
+omi/src/lib/core/lib/opus-1.2.1/log2lin.c
+omi/src/lib/core/lib/opus-1.2.1/mathops.c
+omi/src/lib/core/lib/opus-1.2.1/mdct.c
+omi/src/lib/core/lib/opus-1.2.1/modes.c
+omi/src/lib/core/lib/opus-1.2.1/opus.c
+omi/src/lib/core/lib/opus-1.2.1/opus_decoder.c
+omi/src/lib/core/lib/opus-1.2.1/opus_encoder.c
+omi/src/lib/core/lib/opus-1.2.1/pitch.c
+omi/src/lib/core/lib/opus-1.2.1/pitch_est_tables.c
+omi/src/lib/core/lib/opus-1.2.1/quant_bands.c
+omi/src/lib/core/lib/opus-1.2.1/rate.c
+omi/src/lib/core/lib/opus-1.2.1/repacketizer.c
+omi/src/lib/core/lib/opus-1.2.1/resampler.c
+omi/src/lib/core/lib/opus-1.2.1/resampler_private_AR2.c
+omi/src/lib/core/lib/opus-1.2.1/resampler_private_IIR_FIR.c
+omi/src/lib/core/lib/opus-1.2.1/resampler_private_down_FIR.c
+omi/src/lib/core/lib/opus-1.2.1/resampler_private_up2_HQ.c
+omi/src/lib/core/lib/opus-1.2.1/resampler_rom.c
+omi/src/lib/core/lib/opus-1.2.1/shell_coder.c
+omi/src/lib/core/lib/opus-1.2.1/sort.c
+omi/src/lib/core/lib/opus-1.2.1/stereo_MS_to_LR.c
+omi/src/lib/core/lib/opus-1.2.1/stereo_decode_pred.c
+omi/src/lib/core/lib/opus-1.2.1/sum_sqr_shift.c
+omi/src/lib/core/lib/opus-1.2.1/table_LSF_cos.c
+omi/src/lib/core/lib/opus-1.2.1/tables_LTP.c
+omi/src/lib/core/lib/opus-1.2.1/tables_NLSF_CB_NB_MB.c
+omi/src/lib/core/lib/opus-1.2.1/tables_NLSF_CB_WB.c
+omi/src/lib/core/lib/opus-1.2.1/tables_gain.c
+omi/src/lib/core/lib/opus-1.2.1/tables_other.c
+omi/src/lib/core/lib/opus-1.2.1/tables_pitch_lag.c
+omi/src/lib/core/lib/opus-1.2.1/tables_pulses_per_block.c
+omi/src/lib/core/lib/opus-1.2.1/vq.c
+zephyr/misc/empty_file.c
 ```
