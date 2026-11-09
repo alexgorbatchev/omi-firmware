@@ -2,7 +2,7 @@
 
 # What It Does
 
-- **Release packages**: Each release, tagged `firmware-v<revision>` (for example `firmware-v3.0.22.7`), carries `dfu_application.zip`, an MCUboot DFU package holding only the application core image (image 0), and `dfu_application.zip.sha256`.
+- **Release packages**: Each release, tagged `firmware-v<revision>` (for example `firmware-v3.0.22.7`), carries `dfu_application.zip`, an MCUboot DFU package holding only the application core image (image 0), `dfu_application.zip.sha256`, and `THIRD_PARTY_NOTICES.md`, the notices of the third-party code in that image.
 - **Gestures without a phone**: A double tap stores a bookmark and a triple tap a track request next to the audio on the pendant; both reach the phone with its next sync.
 - **Sync request**: A triple tap with no phone connected advertises a "sync requested" flag for up to 120 s, so a nearby phone can connect and sync at once.
 - **Update lock**: From `3.0.22.7`, Bluetooth firmware updates are refused until five quick taps open a five-minute update window.
@@ -78,4 +78,4 @@ MCUboot overwrites the old image during an update and keeps no copy, so a power 
 
 # License
 
-[MIT](LICENSE), the license of the upstream Omi firmware. The images also contain third-party components under their own licenses: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+[MIT](LICENSE), the license of the upstream Omi firmware. The images also contain third-party components under their own licenses: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the newest release, and each release's own `THIRD_PARTY_NOTICES.md` asset for its image.
