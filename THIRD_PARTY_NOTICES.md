@@ -1,6 +1,6 @@
 # Third-party notices
 
-The firmware images in this repository's releases are built with the nRF Connect SDK v2.9.0 and contain the components below, in addition to the Omi firmware itself ([LICENSE](LICENSE)). The list covers the libraries linked into the application core image (image 0), the only image the releases ship.
+The firmware images in this repository's releases are built with the nRF Connect SDK v2.9.0 and contain the components below, in addition to the Omi firmware itself ([LICENSE](LICENSE)). The list covers the libraries linked into the application core image (image 0), the only image the releases ship; it is generated from the image's link map.
 
 | Component | Used for | License |
 | :--- | :--- | :--- |
@@ -11,7 +11,8 @@ The firmware images in this repository's releases are built with the nRF Connect
 | [nRF Connect SDK](https://github.com/nrfconnect/sdk-nrf) and [nrfxlib](https://github.com/nrfconnect/sdk-nrfxlib) (`nrf_cc312_platform`) | Nordic drivers and the CryptoCell platform library | LicenseRef-Nordic-5-Clause |
 | [nrfx](https://github.com/NordicSemiconductor/nrfx) | Nordic peripheral drivers | BSD-3-Clause |
 | [littlefs](https://github.com/littlefs-project/littlefs) | Settings file system | BSD-3-Clause |
-| [libmetal](https://github.com/OpenAMP/libmetal) and [OpenAMP](https://github.com/OpenAMP/open-amp) | Inter-core communication with the network core | BSD-3-Clause |
+| [libmetal](https://github.com/OpenAMP/libmetal) | Inter-core communication with the network core | BSD-3-Clause |
+| [OpenAMP](https://github.com/OpenAMP/open-amp) | Inter-core communication with the network core | BSD-3-Clause |
 | [Opus](https://opus-codec.org) 1.2.1 | Audio encoding | BSD-3-Clause |
 | [picolibc](https://github.com/picolibc/picolibc) | C library | BSD and related permissive licenses, listed in its `COPYING.picolibc` |
 | GCC `libgcc` | Compiler runtime | GPL-3.0 with the GCC Runtime Library Exception |
@@ -224,7 +225,6 @@ Copyright 2024 Marcus Alexander Tjomsaas (battery library).
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 ```
 
 ## LicenseRef-Nordic-5-Clause
@@ -273,9 +273,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## nrfx (BSD-3-Clause)
 
 ```text
-Copyright (c) 2015 - 2024, Nordic Semiconductor ASA
+Copyright (c) 2017 - 2024, Nordic Semiconductor ASA
 All rights reserved.
-
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -302,7 +301,6 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
-
 ```
 
 ## littlefs (BSD-3-Clause)
@@ -419,7 +417,6 @@ Use the following tag instead of the full license text in the individual files:
 
 This enables machine processing of license information based on the SPDX
 License Identifiers that are here available: http://spdx.org/licenses/
-
 ```
 
 ## OpenAMP (BSD-3-Clause)
@@ -528,7 +525,6 @@ Use the following tag instead of the full license text in the individual files:
 
 This enables machine processing of license information based on the SPDX
 License Identifiers that are here available: http://spdx.org/licenses/
-
 ```
 
 ## Opus 1.2.1 (BSD-3-Clause)
@@ -604,7 +600,6 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
-***********************************************************************/
 ```
 
 The CELT and shared sources are under these terms:
