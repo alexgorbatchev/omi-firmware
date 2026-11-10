@@ -7025,7 +7025,7 @@ The SPDX license identifier of every third-party source file compiled into the i
 
 | SPDX identifier | Sources |
 | :--- | ---: |
-| Apache-2.0 | 200 |
+| Apache-2.0 | 202 |
 | BSD-3-Clause | 42 |
 | LicenseRef-Nordic-5-Clause | 8 |
 | BSD-2-Clause | 2 |
@@ -7084,6 +7084,8 @@ zephyr/drivers/flash/soc_flash_nrf.c
 zephyr/drivers/flash/spi_nor.c
 zephyr/drivers/gpio/gpio_hogs.c
 zephyr/drivers/gpio/gpio_nrfx.c
+zephyr/drivers/hwinfo/hwinfo_nrf.c
+zephyr/drivers/hwinfo/hwinfo_weak_impl.c
 zephyr/drivers/i2c/i2c_common.c
 zephyr/drivers/i2c/i2c_nrfx_twim.c
 zephyr/drivers/i2c/i2c_nrfx_twim_common.c
