@@ -7025,7 +7025,7 @@ The SPDX license identifier of every third-party source file compiled into the i
 
 | SPDX identifier | Sources |
 | :--- | ---: |
-| Apache-2.0 | 199 |
+| Apache-2.0 | 200 |
 | BSD-3-Clause | 42 |
 | LicenseRef-Nordic-5-Clause | 8 |
 | BSD-2-Clause | 2 |
@@ -7187,6 +7187,7 @@ zephyr/subsys/bluetooth/host/id.c
 zephyr/subsys/bluetooth/host/keys.c
 zephyr/subsys/bluetooth/host/l2cap.c
 zephyr/subsys/bluetooth/host/long_wq.c
+zephyr/subsys/bluetooth/host/settings.c
 zephyr/subsys/bluetooth/host/smp.c
 zephyr/subsys/bluetooth/host/uuid.c
 zephyr/subsys/bluetooth/services/bas/bas.c
