@@ -7,6 +7,7 @@ The firmware images in this repository's releases are built with the nRF Connect
 | [Zephyr RTOS](https://github.com/zephyrproject-rtos/zephyr) | Kernel, drivers, Bluetooth host, file system and MCUmgr | Apache-2.0 |
 | [MCUboot](https://github.com/mcu-tools/mcuboot) `bootutil` | Image slot state for updates | Apache-2.0 |
 | [zcbor](https://github.com/NordicSemiconductor/zcbor) | CBOR encoding for MCUmgr | Apache-2.0 |
+| [Mbed TLS](https://github.com/Mbed-TLS/mbedtls) | SHA-256 for the uploaded image check | Apache-2.0 (offered as Apache-2.0 OR GPL-2.0-or-later) |
 | [nRF Connect SDK](https://github.com/nrfconnect/sdk-nrf) and [nrfxlib](https://github.com/nrfconnect/sdk-nrfxlib) (`nrf_cc312_platform`) | Nordic drivers and the CryptoCell platform library | LicenseRef-Nordic-5-Clause |
 | [nrfx](https://github.com/NordicSemiconductor/nrfx) | Nordic peripheral drivers | BSD-3-Clause |
 | [littlefs](https://github.com/littlefs-project/littlefs) | Settings file system | BSD-3-Clause |
@@ -19,7 +20,9 @@ The firmware images in this repository's releases are built with the nRF Connect
 
 ## Apache License 2.0
 
-Applies to Zephyr RTOS, MCUboot and zcbor. MCUboot's copy of the license additionally notes that MCUboot bundles tinycrypt under the 3-clause BSD license.
+Applies to Zephyr RTOS, MCUboot, zcbor and Mbed TLS. MCUboot's copy of the license additionally notes that MCUboot bundles tinycrypt under the 3-clause BSD license. Mbed TLS is offered under Apache-2.0 OR GPL-2.0-or-later; this firmware uses it under Apache-2.0.
+
+Copyright The Mbed TLS Contributors (Mbed TLS).
 
 ```text
                                  Apache License
@@ -7025,7 +7028,8 @@ The SPDX license identifier of every third-party source file compiled into the i
 
 | SPDX identifier | Sources |
 | :--- | ---: |
-| Apache-2.0 | 202 |
+| Apache-2.0 | 205 |
+| Apache-2.0 OR GPL-2.0-or-later | 91 |
 | BSD-3-Clause | 42 |
 | LicenseRef-Nordic-5-Clause | 8 |
 | BSD-2-Clause | 2 |
@@ -7162,6 +7166,8 @@ zephyr/lib/utils/rb.c
 zephyr/lib/utils/ring_buffer.c
 zephyr/lib/utils/timeutil.c
 zephyr/modules/hal_nordic/nrfx/nrfx_glue.c
+zephyr/modules/mbedtls/zephyr_entropy.c
+zephyr/modules/mbedtls/zephyr_init.c
 zephyr/soc/nordic/common/poweroff.c
 zephyr/soc/nordic/nrf53/nrf53_cpunet_mgmt.c
 zephyr/soc/nordic/nrf53/soc.c
@@ -7234,9 +7240,106 @@ zephyr/subsys/settings/src/settings_line.c
 zephyr/subsys/settings/src/settings_nvs.c
 zephyr/subsys/settings/src/settings_store.c
 zephyr/subsys/storage/flash_map/flash_map.c
+zephyr/subsys/storage/flash_map/flash_map_integrity.c
 zephyr/subsys/storage/flash_map/flash_map_layout.c
 zephyr/subsys/storage/stream/stream_flash.c
 zephyr/subsys/tracing/tracing_none.c
+```
+
+### Apache-2.0 OR GPL-2.0-or-later
+
+```text
+modules/crypto/mbedtls/library/aes.c
+modules/crypto/mbedtls/library/aesni.c
+modules/crypto/mbedtls/library/aria.c
+modules/crypto/mbedtls/library/asn1parse.c
+modules/crypto/mbedtls/library/asn1write.c
+modules/crypto/mbedtls/library/base64.c
+modules/crypto/mbedtls/library/bignum.c
+modules/crypto/mbedtls/library/bignum_core.c
+modules/crypto/mbedtls/library/bignum_mod.c
+modules/crypto/mbedtls/library/bignum_mod_raw.c
+modules/crypto/mbedtls/library/block_cipher.c
+modules/crypto/mbedtls/library/camellia.c
+modules/crypto/mbedtls/library/ccm.c
+modules/crypto/mbedtls/library/chacha20.c
+modules/crypto/mbedtls/library/chachapoly.c
+modules/crypto/mbedtls/library/cipher.c
+modules/crypto/mbedtls/library/cipher_wrap.c
+modules/crypto/mbedtls/library/cmac.c
+modules/crypto/mbedtls/library/constant_time.c
+modules/crypto/mbedtls/library/ctr_drbg.c
+modules/crypto/mbedtls/library/debug.c
+modules/crypto/mbedtls/library/des.c
+modules/crypto/mbedtls/library/dhm.c
+modules/crypto/mbedtls/library/ecdh.c
+modules/crypto/mbedtls/library/ecdsa.c
+modules/crypto/mbedtls/library/ecjpake.c
+modules/crypto/mbedtls/library/ecp.c
+modules/crypto/mbedtls/library/ecp_curves.c
+modules/crypto/mbedtls/library/ecp_curves_new.c
+modules/crypto/mbedtls/library/entropy.c
+modules/crypto/mbedtls/library/entropy_poll.c
+modules/crypto/mbedtls/library/error.c
+modules/crypto/mbedtls/library/gcm.c
+modules/crypto/mbedtls/library/hkdf.c
+modules/crypto/mbedtls/library/hmac_drbg.c
+modules/crypto/mbedtls/library/lmots.c
+modules/crypto/mbedtls/library/lms.c
+modules/crypto/mbedtls/library/md.c
+modules/crypto/mbedtls/library/md5.c
+modules/crypto/mbedtls/library/memory_buffer_alloc.c
+modules/crypto/mbedtls/library/mps_reader.c
+modules/crypto/mbedtls/library/mps_trace.c
+modules/crypto/mbedtls/library/net_sockets.c
+modules/crypto/mbedtls/library/nist_kw.c
+modules/crypto/mbedtls/library/oid.c
+modules/crypto/mbedtls/library/padlock.c
+modules/crypto/mbedtls/library/pem.c
+modules/crypto/mbedtls/library/pk.c
+modules/crypto/mbedtls/library/pk_ecc.c
+modules/crypto/mbedtls/library/pk_wrap.c
+modules/crypto/mbedtls/library/pkcs12.c
+modules/crypto/mbedtls/library/pkcs5.c
+modules/crypto/mbedtls/library/pkparse.c
+modules/crypto/mbedtls/library/pkwrite.c
+modules/crypto/mbedtls/library/platform.c
+modules/crypto/mbedtls/library/platform_util.c
+modules/crypto/mbedtls/library/poly1305.c
+modules/crypto/mbedtls/library/psa_util.c
+modules/crypto/mbedtls/library/ripemd160.c
+modules/crypto/mbedtls/library/rsa.c
+modules/crypto/mbedtls/library/rsa_alt_helpers.c
+modules/crypto/mbedtls/library/sha1.c
+modules/crypto/mbedtls/library/sha256.c
+modules/crypto/mbedtls/library/sha3.c
+modules/crypto/mbedtls/library/sha512.c
+modules/crypto/mbedtls/library/ssl_cache.c
+modules/crypto/mbedtls/library/ssl_ciphersuites.c
+modules/crypto/mbedtls/library/ssl_client.c
+modules/crypto/mbedtls/library/ssl_cookie.c
+modules/crypto/mbedtls/library/ssl_debug_helpers_generated.c
+modules/crypto/mbedtls/library/ssl_msg.c
+modules/crypto/mbedtls/library/ssl_ticket.c
+modules/crypto/mbedtls/library/ssl_tls.c
+modules/crypto/mbedtls/library/ssl_tls12_client.c
+modules/crypto/mbedtls/library/ssl_tls12_server.c
+modules/crypto/mbedtls/library/ssl_tls13_client.c
+modules/crypto/mbedtls/library/ssl_tls13_generic.c
+modules/crypto/mbedtls/library/ssl_tls13_keys.c
+modules/crypto/mbedtls/library/ssl_tls13_server.c
+modules/crypto/mbedtls/library/threading.c
+modules/crypto/mbedtls/library/timing.c
+modules/crypto/mbedtls/library/version.c
+modules/crypto/mbedtls/library/version_features.c
+modules/crypto/mbedtls/library/x509.c
+modules/crypto/mbedtls/library/x509_create.c
+modules/crypto/mbedtls/library/x509_crl.c
+modules/crypto/mbedtls/library/x509_crt.c
+modules/crypto/mbedtls/library/x509_csr.c
+modules/crypto/mbedtls/library/x509write.c
+modules/crypto/mbedtls/library/x509write_crt.c
+modules/crypto/mbedtls/library/x509write_csr.c
 ```
 
 ### BSD-3-Clause
